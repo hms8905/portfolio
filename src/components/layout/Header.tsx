@@ -1,4 +1,4 @@
-import { MouseEvent } from "react";
+import type { MouseEvent } from "react";
 import styles from "./Header.module.scss";
 
 type HeaderProps = {
