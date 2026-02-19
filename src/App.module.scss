@@ -1,0 +1,11 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
+
+.main {
+  padding-top: 2rem;
+}
+
+.section {
+  @include container;
+  padding: 3rem 1.5rem;
+}

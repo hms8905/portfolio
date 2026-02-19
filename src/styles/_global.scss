@@ -1,0 +1,61 @@
+@use "@/styles/variables" as *;
+
+/* 기본 리셋 ------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* 전역 폰트 및 색상 ---------------------------------------- */
+body {
+  font-family: $font-base;
+  background-color: $color-bg;
+  color: $color-text;
+  line-height: 1.6;
+}
+
+/* 링크 ----------------------------------------------------- */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+/* 이미지 --------------------------------------------------- */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 섹션 기본 여백 ------------------------------------------ */
+section {
+  padding: 4rem 0;
+}
+
+/* 반응형 컨테이너 (믹스인 없이 기본 적용 버전) ------------ */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $padding-default;
+}
+
+/* 부드러운 스크롤 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* sticky header 높이 보정 (예: 72px) */
+section {
+  scroll-margin-top: 72px;
+}

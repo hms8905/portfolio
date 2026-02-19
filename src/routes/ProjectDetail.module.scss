@@ -1,0 +1,22 @@
+@use "@/styles/variables" as *;
+
+.detail {
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 2rem;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 2rem;
+  color: $color-primary;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.text {
+  line-height: 1.8;
+}

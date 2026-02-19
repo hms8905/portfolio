@@ -1,0 +1,42 @@
+@use "@/styles/variables" as *;
+
+.projects {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: $color-primary;
+}
+
+.swiper {
+  margin: 0 calc(-1 * $padding-default);
+  padding: 1rem $padding-default 3rem $padding-default;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid $color-border;
+  border-radius: 10px;
+  padding: 2rem 1.5rem;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  h3 {
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: #555;
+  }
+}
