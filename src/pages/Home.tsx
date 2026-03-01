@@ -1,7 +1,6 @@
 import Layout from "@/components/Layout";
 import { About, Projects, Contact } from "@/sections";
 import styles from "@/App.module.scss";
-//import styles from "./home.module.scss";
 import useScrollSpy from "@/hooks/useScrollSpy";
 
 export default function Home() {
