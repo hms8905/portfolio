@@ -2,10 +2,10 @@
 @use "@/styles/mixins" as *;
 
 .main {
-  padding-top: 2rem;
+  //padding-top: 2rem;
 }
 
 .section {
   @include container;
-  padding: 3rem 1.5rem;
+  padding: $section-y $gutter;
 }

@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./routes/Home";
-import ProjectDetail from "./routes/ProjectDetail";
+import { HomePage, ProjectDetailPage } from "@/pages";
+
 
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/project/:id" element={<ProjectDetail />} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/project/:id" element={<ProjectDetailPage />} />
     </Routes>
   );
 }

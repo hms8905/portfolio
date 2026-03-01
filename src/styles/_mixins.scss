@@ -13,7 +13,47 @@
 }
 
 @mixin container {
-  max-width: 1200px;
+  max-width: $bp-xl;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 $space-4;
+}
+
+
+// 최소 너비 기준 (모바일→데스크탑)
+@mixin up($size) {
+  @media (min-width: $size) {
+    @content;
+  }
+}
+
+// 최대 너비 기준 (데스크탑→모바일)
+@mixin down($size) {
+  @media (max-width: ($size - 1px)) {
+    @content;
+  }
+}
+
+// 구간 지정
+@mixin between($min, $max) {
+  @media (min-width: $min) and (max-width: ($max - 1px)) {
+    @content;
+  }
+}
+
+// clamp
+@function fluid(
+  $min,
+  $max,
+  $wmin: $fluid-min-width,
+  $wmax: $fluid-max-width
+) {
+  @return clamp(
+    #{$min},
+    calc(
+      #{$min} +
+      (#{$max} - #{$min}) *
+      ((100vw - #{$wmin}) / (#{$wmax} - #{$wmin}))
+    ),
+    #{$max}
+  );
 }

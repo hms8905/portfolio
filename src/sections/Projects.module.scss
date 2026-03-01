@@ -1,0 +1,64 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
+
+.projects {
+  padding: $space-7 0;
+  text-align: center;
+
+  @include up($bp-md) {
+    padding: $space-8 0;
+  }
+
+  @include up($bp-lg) {
+    padding: $space-9 0;
+  }
+}
+
+.title {
+  margin-bottom: fluid(2rem, 2.5rem);
+  color: $color-primary;
+}
+
+.swiper {
+  margin: 0 calc(-1 * 1rem);
+  padding: 1rem 1rem 3rem 1rem;
+
+  @include up($bp-md) {
+    padding: 1.25rem 1rem 3.25rem 1rem;
+  }
+
+  @include up($bp-lg) {
+    padding: 1.5rem 1rem 3.5rem 1rem;
+  }
+}
+
+.card {
+  display: block;
+  background: #fff;
+  border: 1px solid $color-border;
+  border-radius: 10px;
+  padding: 2rem 1.5rem;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  @include up($bp-md) {
+    padding: 2.25rem 1.75rem;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  h3 {
+    margin-bottom: 0.75rem;
+    font-size: fluid(1.05rem, 1.25rem);
+  }
+
+  p {
+    color: #555;
+    font-size: fluid(0.95rem, 1rem);
+  }
+}
