@@ -1,11 +1,8 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixins" as *;
 
-.main {
-  //padding-top: 2rem;
-}
-
-.section {
-  @include container;
-  padding: $section-y $gutter;
+.about {
+  display: grid;
+  gap: $stack;
+  position: relative;
 }

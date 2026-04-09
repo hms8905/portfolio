@@ -1,0 +1,39 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
+
+.main {
+  width: 100%;
+}
+
+.sectionInner {
+  @include container;
+}
+
+.aboutSection,
+.projectsSection,
+.contactSection {
+  position: relative;
+  padding: $section-y 0;
+  scroll-margin-top: 80px;
+}
+
+.aboutSection {
+  position: relative;
+  padding: $section-y 0;
+  scroll-margin-top: 80px;
+
+  background:
+    radial-gradient(circle at 20% 20%, #93c5fd20, transparent 40%),
+    radial-gradient(circle at 80% 40%, #3b82f620, transparent 50%);
+  background-position: 0% 40%;
+  background-repeat: no-repeat;
+}
+
+.heroSection {
+  width: 100%;
+  padding: 0;
+}
+
+.projectsSection {
+  overflow: hidden;
+}

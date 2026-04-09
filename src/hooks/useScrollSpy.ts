@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 
 type UseScrollSpyOptions = {
-  ids: string[];           // 관찰할 섹션 id들
-  rootMargin?: string;     // header 높이에 맞춰 위 여백 보정
-  threshold?: number;      // 교차 비율
+  ids: string[];
+  rootMargin?: string;
+  threshold?: number;
 };
 
 export default function useScrollSpy({
   ids,
-  rootMargin = "-60px 0px -40% 0px",
-  threshold = 0.2,
+  rootMargin = "-75px 0px -60% 0px",
+  threshold = 0.15,
 }: UseScrollSpyOptions) {
   const [activeId, setActiveId] = useState<string>(ids[0] ?? "");
 
@@ -22,12 +22,17 @@ export default function useScrollSpy({
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          const id = entry.target.getAttribute("id")!;
-          if (entry.isIntersecting) {
-            setActiveId(id);
-          }
-        });
+        // 현재 화면에서 "활성 후보"만 추림
+        const visible = entries.filter((e) => e.isIntersecting);
+        if (visible.length === 0) return;
+
+        // 화면 상단에 가장 가까운 섹션을 active로
+        const topMost = visible.reduce((prev, curr) =>
+          curr.boundingClientRect.top < prev.boundingClientRect.top ? curr : prev
+        );
+
+        const id = topMost.target.getAttribute("id");
+        if (id) setActiveId(id);
       },
       { root: null, rootMargin, threshold }
     );

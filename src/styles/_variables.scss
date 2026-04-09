@@ -1,5 +1,6 @@
 // 색상
 $color-primary: #007aff;
+$color-gray: #999;
 $color-bg: #fff;
 $color-text: #222;
 $color-border: #eee;
@@ -34,7 +35,7 @@ $space-9: 6rem;
 $gap-sm: $space-2;
 $stack: $space-3;
 $gutter: $space-4;            // 페이지 좌우 여백
-$section-y: $space-6;         // 섹션 세로 패딩 기본
+$section-y: $space-9;         // 섹션 세로 패딩 기본
 
 
 // fluid typography 기본 기준

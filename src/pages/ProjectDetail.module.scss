@@ -1,22 +1,163 @@
 @use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
 
-.detail {
-  max-width: 800px;
-  margin: 4rem auto;
-  padding: 2rem;
+.main {
+  width: 100%;
 }
 
+/* HERO 영역 */
+.heroSection {
+  width: 100%;
+  background:
+    radial-gradient(circle at 20% 20%, #93c5fd2e, #0000 35%),
+    radial-gradient(circle at 80% 10%, #3b82f626, #0000 40%);
+}
+
+.heroInner {
+  @include container;
+
+  min-height: calc(70svh - 75px);
+
+  display: grid;
+  align-content: center;
+  gap: $stack;
+
+  padding-block: $section-y;
+}
+
+/* 뒤로가기 링크 */
 .back {
   display: inline-block;
-  margin-bottom: 2rem;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.95rem;
   color: $color-primary;
+  cursor: pointer;
+  text-align: left;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
+/* 제목 */
 .title {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: fluid(2.2rem, 3.2rem);
+  line-height: 1.1;
 }
 
-.text {
-  line-height: 1.8;
+/* 설명 */
+.desc {
+  font-size: fluid(1rem, 1.1rem);
+  max-width: 65ch;
+  opacity: 0.9;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $gap-sm;
+  color: $color-text;
+  opacity: 0.75;
+  font-size: 0.95rem;
+}
+
+/* 본문 섹션 */
+.section {
+  @include container;
+  padding-block: $section-y;
+}
+
+/* 본문 콘텐츠 */
+.content {
+  display: grid;
+  gap: $stack;
+
+  max-width: 70ch;
+}
+
+.stackList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $gap-sm;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.stackItem {
+  padding: $space-2 $space-3;
+  border: 1px solid $color-border;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.actions {
+  display: flex;
+  gap: $gap-sm;
+  flex-wrap: wrap;
+  margin-top: $space-3;
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-2 $space-4;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 3px;
+  }
+}
+
+.primary {
+  background: $color-primary;
+  color: #fff;
+}
+
+.secondary {
+  border: 1px solid $color-border;
+  color: $color-text;
+}
+
+.primary:hover,
+.secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.imageWrap {
+  border: 1px solid $color-border;
+  border-radius: 16px;
+  overflow: hidden;
+  //background: rgba(0, 0, 0, 0.02);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.previewSwiper {
+  width: 100%;
+}
+
+.list {
+  display: grid;
+  gap: $space-2;
+  padding-left: 1.25rem;
+}
+
+.list li {
+  line-height: 1.7;
 }

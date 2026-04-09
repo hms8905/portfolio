@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef, type MouseEvent } from "react";
+import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
 
 type HeaderProps = {
@@ -10,7 +11,7 @@ export default function Header({ activeId }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const navRef = useRef<HTMLElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
-
+  const [scrolled, setScrolled] = useState(false);
 
   const items = [
     { id: "about", label: "About" },
@@ -18,10 +19,9 @@ export default function Header({ activeId }: HeaderProps) {
     { id: "contact", label: "Contact" },
   ];
 
-  const onClickLink = (e: MouseEvent<HTMLAnchorElement>, id: string) => {
+  const onClickLink = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     const el = document.getElementById(id);
-    console.log(id);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     setOpen(false); // 모바일에서 클릭하면 닫기
   };
@@ -48,6 +48,16 @@ export default function Header({ activeId }: HeaderProps) {
     };
   }, [open]);
 
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 8); // 8px만 내려가도 적용
+    };
+
+    onScroll(); // 초기 상태 반영
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   // ESC 키로 닫기
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -58,9 +68,13 @@ export default function Header({ activeId }: HeaderProps) {
   }, []);
 
   return (
-    <header className={styles.header}>
+    <header
+      className={`${styles.header} ${(scrolled || open) ? styles.scrolled : ""}`}
+    >
       <div className={styles.inner}>
-        <h1 className={styles.logo}>My Portfolio</h1>
+        <Link to={`/`}>
+          <h1 className={styles.logo}>Myeongsik's Web Portfolio</h1>
+        </Link>
 
         {/* 모바일 햄버거 버튼 */}
         <button

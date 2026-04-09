@@ -1,47 +1,100 @@
-import { Swiper, SwiperSlide } from "swiper/react";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import "swiper/css";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import { projects } from "@/data/projects";
 import styles from "./Projects.module.scss";
 
+import "swiper/css";
+
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Projects() {
-  const projectList = [
-    { id: 1, title: "Portfolio Website", desc: "React + Vite + Sass 기반" },
-    { id: 2, title: "Landing Page", desc: "GSAP / ScrollTrigger 인터랙션" },
-    { id: 3, title: "E-commerce UI", desc: "Redux + API 연동 예시" },
-  ];
+  const savedSlide = Number(sessionStorage.getItem("projects-slide") ?? 0);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      const slides = gsap.utils.toArray<HTMLElement>(
+        sectionRef.current!.querySelectorAll(".swiper-slide")
+      );
+
+      gsap.fromTo(
+        slides,
+        { autoAlpha: 0, y: 40 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          stagger: 0.15,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 75%",
+            toggleActions: "play reverse play reverse",
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section className={styles.projects}>
+    <div ref={sectionRef} className={styles.projects}>
       <h2 className={styles.title}>Projects</h2>
 
       <Swiper
         modules={[Autoplay]}
-        loop
-        centeredSlides={false}
+        initialSlide={savedSlide}
         slidesPerView={1.15}
         spaceBetween={16}
+        loop
+        /*
         autoplay={{
           delay: 3500,
           disableOnInteraction: false,
           pauseOnMouseEnter: true,
         }}
+          */
         breakpoints={{
           480: { slidesPerView: 1.3, spaceBetween: 16 },
           768: { slidesPerView: 2, spaceBetween: 20 },
           1024: { slidesPerView: 3, spaceBetween: 24 },
         }}
+        onSlideChange={(swiper) => {
+          sessionStorage.setItem("projects-slide", String(swiper.realIndex));
+        }}
         className={styles.swiper}
       >
-        {projectList.map((project) => (
+        {projects.map((project) => (
           <SwiperSlide key={project.id}>
             <Link className={styles.card} to={`/project/${project.id}`}>
-              <h3>{project.title}</h3>
-              <p>{project.desc}</p>
+              {project.thumbnail && (
+                <div className={styles.thumbWrap}>
+                  <img
+                    src={project.thumbnail}
+                    alt={`${project.title} thumbnail`}
+                    className={styles.thumb}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              )}
+
+              <div className={styles.cardBody}>
+                <h3>{project.title}</h3>
+                <p>{project.desc}</p>
+              </div>
             </Link>
           </SwiperSlide>
         ))}
       </Swiper>
-    </section>
+    </div>
   );
 }

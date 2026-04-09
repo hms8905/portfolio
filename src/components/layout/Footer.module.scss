@@ -2,9 +2,43 @@
 @use "@/styles/mixins" as *;
 
 .footer {
-    border-top: 1px solid $color-border;
-    text-align: center;
-    padding: $space-4 0;
-    color: #777;
-    font-size: 0.85rem;
+  padding: 0 $gutter;
+  border-top: 1px solid $color-border;
+  margin-top: $section-y;
+}
+
+.inner {
+  @include container;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: $space-4 0;
+
+  @include up($bp-md) {
+    padding: $space-5 0;
+  }
+}
+
+.copy {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.links {
+  display: flex;
+  gap: $space-3;
+
+  a {
+    text-decoration: none;
+    color: $color-text;
+    font-size: 0.9rem;
+
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
 }
