@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement | null>(null);
-  const photoRef = useRef<HTMLDivElement | null>(null);
+  const photoRef = useRef<HTMLImageElement | null>(null);
 
   useEffect(() => {
     if (!heroRef.current) return;
@@ -70,7 +70,7 @@ export default function Hero() {
 
     const el = photoRef.current;
 
-    const handleMove = (e: MouseEvent) => {
+    const handleMove = (e: globalThis.MouseEvent) => {
       const { innerWidth, innerHeight } = window;
 
       const x = (e.clientX / innerWidth - 0.5) * 20;
@@ -102,7 +102,7 @@ export default function Hero() {
       <div className={styles.inner}>
         <div className={styles.flex}>
           <div className={styles.photo}>
-            <img ref={photoRef} src="/public/images/profile_1.png" alt="" />
+            <img ref={photoRef} src="/images/profile_1.png" alt="" />
           </div>
           <div className={styles.profile}>
             <h2 className={styles.title}>

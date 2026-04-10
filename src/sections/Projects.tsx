@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projects } from "@/data/projects";
+import type { Project } from "@/type/project";
 import Popup from "@/components/Popup"; // 팝업 컴포넌트 임포트
 import styles from "./Projects.module.scss";
 import "swiper/css";
@@ -15,7 +15,7 @@ export default function Projects() {
   const savedSlide = Number(sessionStorage.getItem("projects-slide") ?? 0);
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const [isPopupOpen, setPopupOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -46,7 +46,7 @@ export default function Projects() {
     return () => ctx.revert();
   }, []);
 
-  const openPopup = (project) => {
+  const openPopup = (project: Project) => {
     setSelectedProject(project);
     setPopupOpen(true);
   };
@@ -85,7 +85,6 @@ export default function Projects() {
       >
         {projects.map((project) => (
           <SwiperSlide key={project.id}>
-            {/* <Link className={styles.card} to={`/project/${project.id}`}> */}
             <div className={styles.card} onClick={() => openPopup(project)}>
               {project.thumbnail && (
                 <div className={styles.thumbWrap}>
@@ -104,12 +103,10 @@ export default function Projects() {
                 <p>{project.desc}</p>
               </div>
             </div>
-            {/* </Link> */}
           </SwiperSlide>
         ))}
       </Swiper>
-
-      {isPopupOpen && (
+      {isPopupOpen && selectedProject && (
         <Popup project={selectedProject} onClose={closePopup} />
       )}
     </div>
