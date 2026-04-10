@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./Popup.module.scss"; // CSS 모듈 임포트
+import { getImagePath } from "@/utils/getImagePath";
 import type { Project } from "@/type/project";
 import "swiper/css"; // Swiper 스타일 임포트
 
@@ -23,7 +24,7 @@ const Popup = ({ project, onClose }: PopupProps) => {
           {project.images?.map((image: string, index: number) => (
             <SwiperSlide key={index}>
               <img
-                src={image}
+                src={getImagePath(image)}
                 alt={project.title}
               />
             </SwiperSlide>

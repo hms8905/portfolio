@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import styles from "./About.module.scss";
-
+import { getImagePath } from "@/utils/getImagePath";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -38,7 +38,10 @@ export default function About() {
       {/* <h2 className={styles.title}>About</h2> */}
       <div className={styles.flex}>
         <div className={styles.photo}>
-          <img src="/public/images/profile_2.jpg" alt="" />
+          <img
+            src={getImagePath("/images/profile_2.jpg")}
+            alt=""
+          />
         </div>
         <div className={styles.text}>
           <p>

@@ -1,6 +1,6 @@
 import { useEffect, useRef, type MouseEvent } from "react";
 import styles from "./Hero.module.scss";
-
+import { getImagePath } from "@/utils/getImagePath";
 import { gsap } from "gsap";
 
 export default function Hero() {
@@ -102,7 +102,11 @@ export default function Hero() {
       <div className={styles.inner}>
         <div className={styles.flex}>
           <div className={styles.photo}>
-            <img ref={photoRef} src="/images/profile_1.png" alt="" />
+            <img 
+              ref={photoRef}
+              src={getImagePath("/images/profile_1.png")}
+              alt="" 
+            />
           </div>
           <div className={styles.profile}>
             <h2 className={styles.title}>

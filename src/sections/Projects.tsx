@@ -4,6 +4,7 @@ import { Autoplay } from "swiper/modules";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projects } from "@/data/projects";
+import { getImagePath } from "@/utils/getImagePath";
 import type { Project } from "@/type/project";
 import Popup from "@/components/Popup"; // 팝업 컴포넌트 임포트
 import styles from "./Projects.module.scss";
@@ -89,7 +90,7 @@ export default function Projects() {
               {project.thumbnail && (
                 <div className={styles.thumbWrap}>
                   <img
-                    src={project.thumbnail}
+                    src={getImagePath(project.thumbnail)}
                     alt={`${project.title} thumbnail`}
                     className={styles.thumb}
                     loading="lazy"
