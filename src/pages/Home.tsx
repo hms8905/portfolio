@@ -13,11 +13,12 @@ export default function Home() {
   const ids = ["about", "projects", "contact"];
   const activeId = useScrollSpy({
     ids,
-    rootMargin: "-60px 0px -40% 0px",
+    rootMargin: "-40% 0px 0% 0px",
     threshold: 0.2,
   });
 
   const aboutSectionRef = useRef<HTMLElement | null>(null);
+  const bgRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!aboutSectionRef.current) return;
@@ -29,13 +30,13 @@ export default function Home() {
     if (prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
-      gsap.to(aboutSectionRef.current, {
-        background: "radial-gradient(circle at 100% 100%, #93c5fd20, transparent 40%), radial-gradient(circle at 80% 100%, #3b82f620, transparent 50%)",
+      gsap.to(bgRef.current, {
+        top: '0%',
         ease: "none",
         scrollTrigger: {
           trigger: aboutSectionRef.current,
-          start: "top bottom",
-          end: "bottom top",
+          start: "top 0%",
+          end: "bottom 30%",
           scrub: true,
           // markers: true,
         },
@@ -48,13 +49,18 @@ export default function Home() {
   return (
     <Layout headerProps={{ activeId }}>
       <main className={styles.main}>
-        <section className={styles.heroSection}>
+
+        <div className={styles.bgdiv}><div ref={bgRef} className={styles.bg}></div></div>
+
+        <section
+          ref={aboutSectionRef}
+          className={styles.heroSection}
+        >
           <Hero />
         </section>
 
         <section
           id="about"
-          ref={aboutSectionRef}
           className={styles.aboutSection}
         >
           <div className={styles.sectionInner}>

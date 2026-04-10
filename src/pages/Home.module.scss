@@ -2,6 +2,7 @@
 @use "@/styles/mixins" as *;
 
 .main {
+  position: relative;
   width: 100%;
 }
 
@@ -14,19 +15,38 @@
 .contactSection {
   position: relative;
   padding: $section-y 0;
-  scroll-margin-top: 80px;
+  scroll-margin-top: 70px;
 }
 
 .aboutSection {
   position: relative;
   padding: $section-y 0;
-  scroll-margin-top: 80px;
+  scroll-margin-top: 70px;
+}
 
+.bgdiv { 
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bg {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: 100%;
   background:
     radial-gradient(circle at 20% 20%, #93c5fd20, transparent 40%),
     radial-gradient(circle at 80% 40%, #3b82f620, transparent 50%);
   background-position: 0% 40%;
   background-repeat: no-repeat;
+  pointer-events: none;
+  touch-action: none;
+  user-select: none;
 }
 
 .heroSection {

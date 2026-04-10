@@ -1,13 +1,12 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 import { projects } from "@/data/projects";
+import Popup from "@/components/Popup"; // 팝업 컴포넌트 임포트
 import styles from "./Projects.module.scss";
-
 import "swiper/css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -15,6 +14,8 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Projects() {
   const savedSlide = Number(sessionStorage.getItem("projects-slide") ?? 0);
   const sectionRef = useRef<HTMLDivElement | null>(null);
+  const [isPopupOpen, setPopupOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -45,6 +46,16 @@ export default function Projects() {
     return () => ctx.revert();
   }, []);
 
+  const openPopup = (project) => {
+    setSelectedProject(project);
+    setPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setPopupOpen(false);
+    setSelectedProject(null);
+  };
+
   return (
     <div ref={sectionRef} className={styles.projects}>
       <h2 className={styles.title}>Projects</h2>
@@ -74,7 +85,8 @@ export default function Projects() {
       >
         {projects.map((project) => (
           <SwiperSlide key={project.id}>
-            <Link className={styles.card} to={`/project/${project.id}`}>
+            {/* <Link className={styles.card} to={`/project/${project.id}`}> */}
+            <div className={styles.card} onClick={() => openPopup(project)}>
               {project.thumbnail && (
                 <div className={styles.thumbWrap}>
                   <img
@@ -91,10 +103,15 @@ export default function Projects() {
                 <h3>{project.title}</h3>
                 <p>{project.desc}</p>
               </div>
-            </Link>
+            </div>
+            {/* </Link> */}
           </SwiperSlide>
         ))}
       </Swiper>
+
+      {isPopupOpen && (
+        <Popup project={selectedProject} onClose={closePopup} />
+      )}
     </div>
   );
 }

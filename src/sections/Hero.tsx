@@ -114,11 +114,11 @@ export default function Hero() {
             </p>
             <div className={styles.actions}>
               <a
-                href="#projects"
+                href="//github.com/hms8905/portfolio"
+                target="_blank"
                 className={styles.primary}
-                onClick={(e) => onClickScroll(e, "projects")}
               >
-                프로젝트 보기
+                Github
               </a>
 
               <a

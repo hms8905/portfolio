@@ -49,10 +49,17 @@ export default function About() {
           </p>
                 
           <ul>
-            <li><b>work</b></li>
+            <li><b>Work Experience</b></li>
             <li><em>2019. 02 ~ 2025. 04</em> <span>에스제이더블유인터내셔널</span></li>
             <li><em>2017. 06 ~ 2018. 11</em> <span>비즈플로우</span></li>
           </ul>
+
+          <ul>
+            <li><b>Skills</b></li>
+            <li>Html, CSS, SCSS, JavaScript, jQuery, React</li>
+            <li>Git, Photoshop, Figma</li>
+          </ul>
+
         </div>
       </div>
     </div>

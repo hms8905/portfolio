@@ -26,7 +26,15 @@ export const projects: Project[] = [
     stack: ["React", "TypeScript", "Vite", "Sass"],
     github: "https://github.com/your-repo",
     demo: "https://hms8905.github.io/portfolio/",
-    images: ["/projects/portfolio-cover1.jpg", "/projects/portfolio-cover1-2.jpg"],
+    images: [
+      "/images/projects/project_lab-mo1.jpg",
+      "/images/projects/project_lab-mo2.jpg",
+      "/images/projects/project_lab-mo3.jpg",
+      "/images/projects/project_lab-mo4.jpg",
+      "/images/projects/project_lab-pc1.jpg",
+      "/images/projects/project_lab-pc2.jpg",
+      "/images/projects/project_lab-pc3.jpg"
+    ],
     period: "2026.03",
     role: "개인 프로젝트",
     contribution: "기획 · 디자인 · 개발 100%",

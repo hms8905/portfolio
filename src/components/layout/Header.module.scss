@@ -69,45 +69,20 @@
 
 .link {
   position: relative;
-  color: $color-text;
-  text-decoration: none;
   padding: 0.25rem 0.5rem;
   border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: $color-text;
+  text-decoration: none;
   transition: color 0.2s ease, background 0.2s ease;
-
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0.5rem;
-    right: 0.5rem;
-    bottom: 0.1rem;
-    height: 2px;
-    background: $color-primary;
-    border-radius: 999px;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.2s ease;
-  }
 
   &:hover {
     color: $color-primary;
-  }
-
-  &:hover::after {
-    transform: scaleX(1);
-  }
-
-  &:focus-visible::after {
-    transform: scaleX(1);
   }
 }
 
 .active {
   color: $color-primary;
-  //background: rgba(0, 0, 0, 0.04);
-  background: rgba(59, 130, 246, 0.08);
-
-  &::after {
-    transform: scaleX(1);
-  }
+  // background: rgba(59, 130, 246, 0.08);
 }
