@@ -37,7 +37,7 @@ export default function Projects() {
           stagger: 0.15,
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top 75%",
+            start: "top 80%",
             toggleActions: "play reverse play reverse",
           },
         }
@@ -64,9 +64,9 @@ export default function Projects() {
       <Swiper
         modules={[Autoplay]}
         initialSlide={savedSlide}
-        slidesPerView={1.15}
+        slidesPerView={1.3}
         spaceBetween={16}
-        loop
+        //loop
         /*
         autoplay={{
           delay: 3500,
@@ -100,8 +100,14 @@ export default function Projects() {
               )}
 
               <div className={styles.cardBody}>
-                <h3>{project.title}</h3>
-                <p>{project.desc}</p>
+                <h3>{project.title}  <span>Click</span></h3>
+                <div className={styles.tags}>
+                {project.tag?.map((tag: string, index: number) => (
+                  <span key={index} className={styles[tag]}>
+                      {tag}
+                  </span>
+                ))}
+                </div>
               </div>
             </div>
           </SwiperSlide>

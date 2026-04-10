@@ -23,17 +23,17 @@ export default function Hero() {
           duration: 0.8,
         },
       });
-
-      tl.fromTo(
-        `.${styles.kicker}`,
-        { autoAlpha: 0, y: 20 },
-        { autoAlpha: 1, y: 0 }
-      )
+      tl
         .fromTo(
-          `.${styles.title}`,
-          { autoAlpha: 0, y: 24 },
-          { autoAlpha: 1, y: 0 },
-          "-=0.5"
+          `.${styles.char}`,
+          { y: 60, autoAlpha: 0, rotateX: -90 },
+          {
+            y: 0,
+            autoAlpha: 1,
+            rotateX: 0,
+            stagger: 0.04,
+            ease: "back.out(1.7)",
+          }
         )
         .fromTo(
           `.${styles.desc}`,
@@ -46,8 +46,12 @@ export default function Hero() {
           { autoAlpha: 0, y: 16 },
           { autoAlpha: 1, y: 0 },
           "-=0.35"
+        ).fromTo(
+          `.${styles.photo}`,
+          { autoAlpha: 0, y: 20 },
+          { autoAlpha: 1, y: 0 },
+          "-=0.35"
         );
-
       if (photoRef.current) {
         gsap.fromTo(
           photoRef.current,
@@ -110,7 +114,15 @@ export default function Hero() {
           </div>
           <div className={styles.profile}>
             <h2 className={styles.title}>
-              Myeongsik's <br/>Portfolio
+              {["Myeongsik's", "Portfolio"].map((line, idx) => (
+                <div key={idx}>
+                  {line.split("").map((char, i) => (
+                    <span key={i} className={styles.char}>
+                      {char}
+                    </span>
+                  ))}
+                </div>
+              ))}
             </h2>
             <p className={styles.desc}>
               안녕하세요. 사용자 경험을 중심으로 만드는<br/>
@@ -118,11 +130,11 @@ export default function Hero() {
             </p>
             <div className={styles.actions}>
               <a
-                href="//github.com/hms8905/portfolio"
-                target="_blank"
+                href="#projects"
                 className={styles.primary}
+                onClick={(e) => onClickScroll(e, "projects")}
               >
-                Github
+                프로젝트
               </a>
 
               <a

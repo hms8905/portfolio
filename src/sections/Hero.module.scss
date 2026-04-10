@@ -5,6 +5,7 @@
   overflow: hidden;
   position: relative;
   width: 100%;
+  margin-top: calc( var(--section-y) * 0.6);
   padding-top: 75px;
   text-align: center;
 }
@@ -19,7 +20,7 @@
   @include container;
   position: relative;
   z-index: 1;
-  padding-block: $space-4 $section-y;
+  padding-block: $space-4 var(--section-y);
 }
 
 .flex {
@@ -36,9 +37,9 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  max-width: 450px;
+  max-width: 500px;
   width: 100%;
-  height: fluid(27rem, 43rem);
+  height: fluid(21rem, 43rem);
   margin-left: $gutter;
   border-radius: 30px 0 30px 0;
   box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
@@ -54,10 +55,12 @@
     will-change: transform, opacity;
   }
 
+  @include down($bp-lg) {
+    max-width: 400px;
+  }
+
   @include down($bp-md) {
     width: 100%;
-    max-height: 600px;
-    height: auto;
     margin-top: $gutter;
     margin-left: 0;
   }
@@ -74,9 +77,18 @@
 }
 
 .title {
+  display: inline-block;
   font-size: fluid(3rem, 4.2rem);
-  line-height: 1.05;
+  line-height: 1.25;
   font-weight: 700;
+
+  @include down($bp-lg) {
+    font-size: fluid(2rem, 3.2rem);
+  }
+}
+
+.char {
+  display: inline-block; // 👈 이거 없으면 애니메이션 안 먹음
 }
 
 .desc {
@@ -84,6 +96,10 @@
   line-height: 1.7;
   color: $color-gray;
   opacity: 0.88;
+
+  @include down($bp-lg) {
+    font-size: fluid(0.8rem, 0.95rem);
+  }
 }
 
 .actions {

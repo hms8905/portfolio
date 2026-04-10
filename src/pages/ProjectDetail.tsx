@@ -53,9 +53,9 @@ export default function ProjectDetail() {
                     </a>
                   )}
 
-                  {project.demo && (
+                  {project.url && (
                     <a
-                      href={project.demo}
+                      href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={styles.secondary}
@@ -77,12 +77,12 @@ export default function ProjectDetail() {
               <h2>Overview</h2>
               <p>{project.overview}</p>
 
-              {project.stack && (
+              {project.tag && (
                 <>
                   <h2>Tech Stack</h2>
-                  <ul className={styles.stackList}>
-                    {project.stack.map((tech) => (
-                      <li key={tech} className={styles.stackItem}>
+                  <ul className={styles.tagList}>
+                    {project.tag.map((tech) => (
+                      <li key={tech} className={styles.tagItem}>
                         {tech}
                       </li>
                     ))}

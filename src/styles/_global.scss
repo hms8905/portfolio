@@ -1,5 +1,6 @@
 @use "./fonts" as *;
 @use "./variables" as *;
+@use "./mixins" as *;
 
 /* 기본 리셋 ------------------------------------------------ */
 *,
@@ -118,5 +119,15 @@ section {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  --section-y: #{$space-9};
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-y: #{$space-7};
   }
 }

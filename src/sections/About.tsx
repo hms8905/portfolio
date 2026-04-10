@@ -35,14 +35,7 @@ export default function About() {
 
   return (
     <div ref={aboutRef} className={styles.about}>
-      {/* <h2 className={styles.title}>About</h2> */}
       <div className={styles.flex}>
-        <div className={styles.photo}>
-          <img
-            src={getImagePath("/images/profile_2.jpg")}
-            alt=""
-          />
-        </div>
         <div className={styles.text}>
           <p>
             <b>안녕하세요. 7년 차 웹 퍼블리셔 함명식입니다.</b> <br/>
@@ -50,19 +43,22 @@ export default function About() {
             웹 표준과 웹 접근성을 준수하며 HTML, CSS, SCSS, JavaScript, React 등을 활용하여 
             웹사이트의 레이아웃과 디자인을 구성하고, Photoshop, figma툴의 숙지로 손쉽게 협업할 수 있습니다.
           </p>
-                
           <ul>
             <li><b>Work Experience</b></li>
             <li><em>2019. 02 ~ 2025. 04</em> <span>에스제이더블유인터내셔널</span></li>
             <li><em>2017. 06 ~ 2018. 11</em> <span>비즈플로우</span></li>
           </ul>
-
           <ul>
             <li><b>Skills</b></li>
-            <li>Html, CSS, SCSS, JavaScript, jQuery, React</li>
+            <li>Html, CSS, Sass, JavaScript, jQuery, React</li>
             <li>Git, Photoshop, Figma</li>
           </ul>
-
+        </div>
+        <div className={styles.photo}>
+          <img
+            src={getImagePath("/images/profile_2.png")}
+            alt=""
+          />
         </div>
       </div>
     </div>

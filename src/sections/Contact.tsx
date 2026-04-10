@@ -19,21 +19,46 @@ export default function Contact() {
     if (prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        contactRef.current,
-        { autoAlpha: 0, y: 32 },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: contactRef.current,
-            start: "top 80%",
-            toggleActions: "play reverse play reverse",
+      const q = gsap.utils.selector(contactRef);
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: contactRef.current,
+          start: "top 80%",
+          toggleActions: "play reverse play reverse",
+        },
+      });
+
+      tl
+        .fromTo(
+          q(`.${styles.title}`),
+          { autoAlpha: 0, y: 40 },
+          { autoAlpha: 1, y: 0, duration: 0.6 }
+        )
+        .fromTo(
+          q(`.${styles.mail}`),
+          { autoAlpha: 0, y: 30 },
+          { autoAlpha: 1, y: 0, duration: 0.5 },
+          "-=0.3"
+        )
+        .fromTo(
+          q(`.${styles.desc}`),
+          { autoAlpha: 0, y: 30 },
+          { autoAlpha: 1, y: 0, duration: 0.5 },
+          "-=0.3"
+        )
+        .fromTo(
+          q(`.${styles.primary}`),
+          { autoAlpha: 0, y: 20, scale: 0.95 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.4,
+            ease: "back.out(1.7)",
           },
-        }
-      );
+          "-=0.2"
+        );
     }, contactRef);
 
     return () => ctx.revert();
@@ -41,25 +66,19 @@ export default function Contact() {
 
   return (
     <div ref={contactRef} className={styles.contact}>
-      <h2 className={styles.title}>Contact</h2>
+      <h2 className={styles.title}>함께 일할 인재를 찾고 계신가요?</h2>
+
+      <a href="mailto:hms8905@naver.com" className={styles.mail}>hms8905@naver.com</a>
 
       <p className={styles.desc}>
-        프로젝트 협업이나 문의가 있으시면 언제든지 연락 주세요.
+        저에게 궁금한 점이 있으시다면 언제든지 연락 주세요. 빠르게 답장 드리겠습니다!
       </p>
 
       <div className={styles.links}>
-        <a href="mailto:your@email.com" className={styles.primary}>
+        <a href="mailto:hms8905@naver.com" className={styles.primary}>
           Email
         </a>
 
-        <a
-          href="https://github.com/hms8905"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.secondary}
-        >
-          GitHub
-        </a>
       </div>
     </div>
   );

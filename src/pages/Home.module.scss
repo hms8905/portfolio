@@ -14,14 +14,28 @@
 .projectsSection,
 .contactSection {
   position: relative;
-  padding: $section-y 0;
+  padding: var(--section-y) 0;
   scroll-margin-top: 70px;
+}
+
+.heroSection {
+  width: 100%;
+  padding: 0;
 }
 
 .aboutSection {
   position: relative;
-  padding: $section-y 0;
+  padding: var(--section-y) 0;
   scroll-margin-top: 70px;
+}
+
+.projectsSection {
+  overflow: hidden;
+  padding-bottom: calc( var(--section-y) - 15px );
+}
+
+.contactSection {
+  //padding-top: 0;
 }
 
 .bgdiv { 
@@ -47,13 +61,4 @@
   pointer-events: none;
   touch-action: none;
   user-select: none;
-}
-
-.heroSection {
-  width: 100%;
-  padding: 0;
-}
-
-.projectsSection {
-  overflow: hidden;
 }

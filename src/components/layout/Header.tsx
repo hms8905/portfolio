@@ -68,45 +68,53 @@ export default function Header({ activeId }: HeaderProps) {
   }, []);
 
   return (
-    <header
-      className={`${styles.header} ${(scrolled || open) ? styles.scrolled : ""}`}
-    >
-      <div className={styles.inner}>
-        <Link to={`/`}>
-          <h1 className={styles.logo}>Myeongsik's Web Portfolio</h1>
-        </Link>
+    <>
+      <header
+        className={`${styles.header} ${(scrolled || open) ? styles.scrolled : ""} ${open ? styles.open : ""}`}
+      >
+        <div className={styles.inner}>
+          <Link to={`/`}>
+            <h1 className={styles.logo}>Myeongsik's Web Portfolio</h1>
+          </Link>
 
-        {/* 모바일 햄버거 버튼 */}
-        <button
-          className={styles.menuButton}
-          aria-expanded={open}
-          aria-controls="primary-navigation"
-          aria-label="Toggle navigation menu"
-          onClick={() => setOpen((prev) => !prev)}
-          ref={buttonRef}
-        >
-          ☰
-        </button>
+          {/* 모바일 햄버거 버튼 */}
+          <button
+            className={`${styles.menuButton} ${open ? styles.open : ""}`}
+            onClick={() => setOpen((prev) => !prev)}
+            ref={buttonRef}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
 
-        <nav
-          id="primary-navigation"
-          className={`${styles.nav} ${open ? styles.open : ""}`}
-          ref={navRef}
-        >
-          {items.map(({ id, label }) => (
-            <a
-              key={id}
-              href={`#${id}`}
-              onClick={(e) => onClickLink(e, id)}
-              className={`${styles.link} ${
-                activeId === id ? styles.active : ""
-              }`}
-            >
-              {label}
-            </a>
-          ))}
-        </nav>
+          <nav
+            id="primary-navigation"
+            className={`${styles.nav} ${open ? styles.open : ""}`}
+            ref={navRef}
+          >
+            {items.map(({ id, label }) => (
+              <a
+                key={id}
+                href={`#${id}`}
+                onClick={(e) => onClickLink(e, id)}
+                className={`${styles.link} ${
+                  activeId === id ? styles.active : ""
+                }`}
+              >
+                {label}
+              </a>
+            ))}
+          </nav>
+        </div>
+      </header>
+      <div className={`${styles.prelayers} ${open ? styles.open : ""}`}>
+        <div className={styles.prelayer}></div>
+        <div className={styles.prelayer}></div>
+        <div className={styles.prelayer}></div>
+        <div className={styles.prelayer}></div>
+        <div className={styles.prelayer}></div>
       </div>
-    </header>
+    </>
   );
 }
