@@ -66,19 +66,25 @@ export default function Contact() {
 
   return (
     <div ref={contactRef} className={styles.contact}>
-      <h2 className={styles.title}>함께 일할 인재를 찾고 계신가요?</h2>
+      <div className={styles.flex}>
+        <div className={styles.text}>
+          <h2 className={styles.title}>함께 일할 인재를 찾고 계신가요?</h2>
 
-      <a href="mailto:hms8905@naver.com" className={styles.mail}>hms8905@naver.com</a>
+          <a href="mailto:hms8905@naver.com" className={styles.mail}>hms8905@naver.com</a>
 
-      <p className={styles.desc}>
-        저에게 궁금한 점이 있으시다면 언제든지 연락 주세요. 빠르게 답장 드리겠습니다!
-      </p>
+          <p className={styles.desc}>
+            저에게 궁금한 점이 있으시다면 언제든지 연락 주세요. <br/>빠르게 답장 드리겠습니다!
+          </p>
 
-      <div className={styles.links}>
-        <a href="mailto:hms8905@naver.com" className={styles.primary}>
-          Email
-        </a>
-
+          <div className={styles.links}>
+            <a href="mailto:hms8905@naver.com" className={styles.primary}>
+              Email
+            </a>
+          </div>
+        </div>
+        <div className={styles.photo}>
+          <img src="/images/profile_3.png" alt="" />
+        </div>
       </div>
     </div>
   );

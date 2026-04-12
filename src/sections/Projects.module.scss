@@ -74,6 +74,9 @@
 }
 
 .cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-sm;;
   padding: $space-5 $gutter;
 
   @include down($bp-md) {
@@ -83,7 +86,6 @@
 
 .cardBody h3 {
   @include flex-between;
-  margin-bottom: 0.45rem;
   font-size: fluid(1.05rem, 1.25rem);
 
   span {
@@ -95,9 +97,19 @@
   }
 }
 
+
 .cardBody p {
   color: #555;
   font-size: fluid(0.95rem, 1rem);
+}
+
+.contribution {
+   font-size: fluid(0.85rem, 1.05rem);
+  color: $color-gray;
+
+  @include down($bp-md) {
+    font-size: fluid(0.65rem, 0.85rem);
+  }
 }
 
 .tags {

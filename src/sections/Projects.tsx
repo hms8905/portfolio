@@ -101,6 +101,7 @@ export default function Projects() {
 
               <div className={styles.cardBody}>
                 <h3>{project.title}  <span>Click</span></h3>
+                <div className={styles.contribution}>{project.contribution}</div>
                 <div className={styles.tags}>
                 {project.tag?.map((tag: string, index: number) => (
                   <span key={index} className={styles[tag]}>
