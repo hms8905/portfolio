@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import styles from "./Contact.module.scss";
-
+import { getImagePath } from "@/utils/getImagePath";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -58,6 +58,12 @@ export default function Contact() {
             ease: "back.out(1.7)",
           },
           "-=0.2"
+        )
+        .fromTo(
+          q(`.${styles.photo}`),
+          { autoAlpha: 0, y: 30 },
+          { autoAlpha: 1, y: 0, duration: 0.5 },
+          "-=0.3"
         );
     }, contactRef);
 
@@ -83,7 +89,7 @@ export default function Contact() {
           </div>
         </div>
         <div className={styles.photo}>
-          <img src="/images/profile_3.png" alt="" />
+          <img src={getImagePath("/images/profile_3.png")} alt="" />
         </div>
       </div>
     </div>

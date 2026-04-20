@@ -6,7 +6,7 @@ export const projects: Project[] = [
     title: "시원스쿨 시험영어",
     period: "2026.03",
     tag: ["React", "TypeScript", "Sass"],
-    contribution: "프론트 90%",
+    contribution: "프론트 80%",
     thumbnail: "/images/projects/project_lab-mo1.jpg",
     images: [
       "/images/projects/project_lab-mo1.jpg",
@@ -35,7 +35,7 @@ export const projects: Project[] = [
     title: "시원스쿨 초등영어",
     period: "2026.03",
     tag: ["Sass", "jQuery","GSAP"],
-    contribution: "프론트 100%",
+    contribution: "프론트 50%",
     thumbnail: "/images/projects/products_junior-mo1.jpg",
     images: [
       "/images/projects/products_junior-mo1.jpg",
