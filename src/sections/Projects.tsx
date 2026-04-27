@@ -23,7 +23,7 @@ export default function Projects() {
 
     const ctx = gsap.context(() => {
       const slides = gsap.utils.toArray<HTMLElement>(
-        sectionRef.current!.querySelectorAll(".swiper-slide")
+        sectionRef.current!.querySelectorAll(".swiper-slide"),
       );
 
       gsap.fromTo(
@@ -40,7 +40,7 @@ export default function Projects() {
             start: "top 80%",
             toggleActions: "play reverse play reverse",
           },
-        }
+        },
       );
     }, sectionRef);
 
@@ -100,14 +100,18 @@ export default function Projects() {
               )}
 
               <div className={styles.cardBody}>
-                <h3>{project.title}  <span>Click</span></h3>
-                <div className={styles.contribution}>{project.contribution}</div>
+                <h3>
+                  {project.title} <span>Click</span>
+                </h3>
+                <div className={styles.contribution}>
+                  {project.contribution}
+                </div>
                 <div className={styles.tags}>
-                {project.tag?.map((tag: string, index: number) => (
-                  <span key={index} className={styles[tag]}>
+                  {project.tag?.map((tag: string, index: number) => (
+                    <span key={index} className={styles[tag]}>
                       {tag}
-                  </span>
-                ))}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>

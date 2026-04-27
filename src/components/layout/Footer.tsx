@@ -10,16 +10,14 @@ export default function Footer() {
 
         <div className={styles.links}>
           <a
-            href="https://github.com/hms8905"
+            href="https://github.com/hms8905/portfolio"
             target="_blank"
             rel="noopener noreferrer"
           >
             GitHub
           </a>
 
-          <a href="mailto:hms8905@naver.com">
-            Email
-          </a>
+          <a href="mailto:hms8905@naver.com">Email</a>
         </div>
       </div>
     </footer>
